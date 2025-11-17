@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 const CadastroGerente = () => {
   const navigate = useNavigate();
@@ -14,8 +14,11 @@ const CadastroGerente = () => {
     dt_nascimento: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -24,148 +27,169 @@ const CadastroGerente = () => {
     try {
       const response = await fetch("http://localhost:8080/Gerentes", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(form),
       });
 
+      const result = await response.text();
+      console.log("Resposta do backend:", result);
+
       if (!response.ok) {
-        alert("Erro ao conectar ao servidor.");
+        const errorText = await response.text();
+        alert("Erro do servidor: " + errorText);
         return;
       }
 
-      navigate("/sucesso-gerente", {
-        state: { nome: form.nome }
-      });
-
+      navigate("/sucesso-gerente");
     } catch (error) {
-      alert("Erro ao enviar dados.");
+      console.error("Erro:", error);
+      alert("Erro ao conectar ao servidor.");
     }
   };
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center px-6"
-      style={{
-        backgroundImage: "url('/tech-lines.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        opacity: 1,
-      }}
-    >
-      <div className="
-        w-full max-w-2xl bg-white/80 backdrop-blur-xl 
-        p-10 rounded-3xl shadow-xl border border-gray-200
-      ">
-        
-        {/* Link para cadastro de funcionário */}
-        <div className="text-right text-sm mb-4">
-          <a
-            href="/cadastro-funcionario"
-            className="text-blue-600 hover:underline"
-          >
+    <div className="relative min-h-screen flex items-center justify-center bg-[#dff1ff]">
+
+      {/* FUNDO TECNOLÓGICO */}
+      <div
+        className="
+          absolute inset-0 
+          bg-[url('/tech-lines.png')] 
+          bg-cover 
+          opacity-100
+          pointer-events-none
+        "
+      ></div>
+
+      {/* CARD */}
+      <div className="relative bg-white w-full max-w-2xl p-10 rounded-3xl shadow-2xl z-20 border border-gray-200">
+
+        {/* LINK PARA FUNCIONÁRIO */}
+        <p className="text-right text-sm mb-5">
+          <Link to="/cadastro-funcionario" className="text-blue-600 hover:underline">
             Não sou gerente → Cadastro Funcionário
-          </a>
-        </div>
-        
-        {/* Ícone */}
+          </Link>
+        </p>
+
+        {/* LOGO */}
         <div className="flex justify-center mb-4">
-          <img src="/logo-ia.png" alt="AI Icon" className="w-16 h-16" />
+          <img src="/logo-ia.png" alt="Logo IA" className="w-20 drop-shadow-lg" />
         </div>
 
-        {/* Título */}
-        <h2 className="text-center text-3xl font-bold text-gray-900">
+        {/* HOME / VOLTAR */}
+        <div className="absolute left-6 top-6">
+          <Link
+            to="/"
+            className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition"
+          >
+            <img src="/iconeCasinha.png" alt="Home" className="w-6 h-6" />
+            <span className="font-medium text-sm">Voltar</span>
+          </Link>
+        </div>
+
+        {/* TÍTULO */}
+        <h2 className="text-center text-3xl font-bold text-gray-900 mb-2">
           👔 Cadastro de Gerente
         </h2>
 
-        <p className="text-center text-gray-600 mt-2 mb-8">
+        <p className="text-center text-gray-600 mb-8">
           Preencha o formulário corretamente para criar sua conta de gerente.
         </p>
 
-        {/* FORM */}
+        {/* FORMULÁRIO */}
         <form onSubmit={handleSubmit} className="space-y-5">
 
+          {/* Nome */}
           <div>
-            <label className="text-sm text-gray-700 font-semibold">Nome Completo</label>
+            <label className="block font-medium mb-1">Nome Completo</label>
             <input
               type="text"
               name="nome"
               value={form.nome}
               onChange={handleChange}
-              className="w-full p-3 mt-1 bg-white border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border rounded-xl bg-gray-100 focus:ring-2 focus:ring-blue-400 outline-none"
               required
             />
           </div>
 
+          {/* CPF */}
           <div>
-            <label className="text-sm text-gray-700 font-semibold">CPF</label>
+            <label className="block font-medium mb-1">CPF</label>
             <input
               type="text"
               name="cpf"
               value={form.cpf}
               onChange={handleChange}
               placeholder="000.000.000-00"
-              className="w-full p-3 mt-1 bg-white border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border rounded-xl bg-gray-100 focus:ring-2 focus:ring-blue-400 outline-none"
               required
             />
           </div>
 
+          {/* Telefone */}
           <div>
-            <label className="text-sm text-gray-700 font-semibold">E-mail</label>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              className="w-full p-3 mt-1 bg-white border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="text-sm text-gray-700 font-semibold">Telefone</label>
+            <label className="block font-medium mb-1">Telefone</label>
             <input
               type="text"
               name="telefone"
               value={form.telefone}
               onChange={handleChange}
               placeholder="(00) 00000-0000"
-              className="w-full p-3 mt-1 bg-white border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border rounded-xl bg-gray-100 focus:ring-2 focus:ring-blue-400 outline-none"
               required
             />
           </div>
 
+          {/* Email */}
           <div>
-            <label className="text-sm text-gray-700 font-semibold">Senha</label>
+            <label className="block font-medium mb-1">E-mail</label>
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              className="w-full p-3 border rounded-xl bg-gray-100 focus:ring-2 focus:ring-blue-400 outline-none"
+              required
+            />
+          </div>
+
+          {/* Senha */}
+          <div>
+            <label className="block font-medium mb-1">Senha</label>
             <input
               type="password"
               name="senha"
               value={form.senha}
               onChange={handleChange}
-              className="w-full p-3 mt-1 bg-white border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border rounded-xl bg-gray-100 focus:ring-2 focus:ring-blue-400 outline-none"
               required
             />
           </div>
 
+          {/* Departamento */}
           <div>
-            <label className="text-sm text-gray-700 font-semibold">Departamento</label>
+            <label className="block font-medium mb-1">Departamento</label>
             <input
               type="text"
               name="departamento"
               value={form.departamento}
               onChange={handleChange}
-              className="w-full p-3 mt-1 bg-white border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border rounded-xl bg-gray-100 focus:ring-2 focus:ring-blue-400 outline-none"
               required
             />
           </div>
 
+          {/* Data de Nascimento */}
           <div>
-            <label className="text-sm text-gray-700 font-semibold">Data de Nascimento</label>
+            <label className="block font-medium mb-1">Data de Nascimento</label>
             <input
               type="date"
               name="dt_nascimento"
               value={form.dt_nascimento}
               onChange={handleChange}
-              className="w-full p-3 mt-1 bg-white border rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border rounded-xl bg-gray-100 focus:ring-2 focus:ring-blue-400 outline-none"
               required
             />
           </div>
@@ -174,15 +198,18 @@ const CadastroGerente = () => {
           <button
             type="submit"
             className="
-              w-full py-3 mt-4 rounded-xl text-white font-semibold
-              bg-gradient-to-r from-blue-600 to-indigo-700
-              shadow-lg hover:scale-[1.03] transition
+              w-full mt-8 py-3 text-white text-lg font-semibold rounded-lg
+              bg-gradient-to-r from-blue-500 to-indigo-600
+              shadow-[0_0_10px_rgba(59,130,246,0.7)]
+              hover:shadow-[0_0_20px_rgba(59,130,246,1)]
+              hover:scale-[1.03]
+              transition-all duration-300
+              animate-pulse
             "
           >
             Cadastrar Gerente
           </button>
         </form>
-
       </div>
     </div>
   );

@@ -56,11 +56,16 @@ const CadastroFuncionario = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center bg-[#dff1ff]">
 
-      {/* BACKGROUND TECH-LINES ESQUERDA */}
-      <div className="absolute left-0 top-0 w-1/2 h-full bg-[url('/tech-lines.png')] bg-cover opacity-100"></div>
-
-      {/* BACKGROUND TECH-LINES DIREITA */}
-      <div className="absolute right-0 top-0 w-1/2 h-full bg-[url('/tech-lines.png')] bg-cover opacity-100"></div>
+       {/* FUNDO DE LINHAS TECH */}
+        <div
+          className="
+            absolute inset-0 
+            bg-[url('/tech-lines.png')] 
+            bg-cover
+            opacity-100
+            pointer-events-none
+          "
+        ></div>
 
       {/* CARD DO FORMULÁRIO */}
       <div className="relative bg-white w-full max-w-2xl p-10 rounded-3xl shadow-2xl z-20 border border-gray-200">
@@ -76,6 +81,19 @@ const CadastroFuncionario = () => {
         <div className="flex justify-center mb-4">
           <img src="/logo-ia.png" alt="Logo IA" className="w-20 drop-shadow-lg" />
         </div>
+
+       {/*Home para pagina inicial*/}
+
+        <div className="absolute left-6 top-6">
+        <Link
+        to="/"
+        className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition"
+        >
+            <img src="/iconeCasinha.png" alt="Home" className="w-6 h-6" />
+        <span className="font-medium text-sm">Voltar</span>
+        </Link>
+        </div>
+
 
         {/* TÍTULO */}
         <h2 className="text-center text-3xl font-bold text-gray-900 mb-2">
@@ -210,8 +228,16 @@ const CadastroFuncionario = () => {
 
           {/* Botão */}
           <button
-            type="submit"
-            className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-lg font-semibold hover:scale-105 transition-all shadow-md"
+             type="submit"
+            className="
+              w-full mt-8 py-3 text-white text-lg font-semibold rounded-lg
+              bg-gradient-to-r from-blue-500 to-indigo-600
+              shadow-[0_0_10px_rgba(59,130,246,0.7)]
+              hover:shadow-[0_0_20px_rgba(59,130,246,1)]
+              hover:scale-[1.03]
+              transition-all duration-300
+              animate-pulse
+            "
           >
             Cadastrar Funcionário
           </button>

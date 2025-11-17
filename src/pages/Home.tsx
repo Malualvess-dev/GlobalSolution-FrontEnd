@@ -151,7 +151,7 @@ const Home = () => {
 
           <div className="flex gap-4 mt-4">
             <Link
-              to="/cadastro"
+              to="/cadastro-funcionario"
               className="px-8 py-3 rounded-lg text-white font-semibold
                 bg-gradient-to-r from-blue-500 to-indigo-600
                 hover:from-blue-600 hover:to-indigo-700
