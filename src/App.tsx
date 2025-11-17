@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import CadastroFuncionario from "./pages/CadastroFuncionario";
 import SucessoFuncionario from "./pages/SucessoFuncionario";
+import CadastroGerente from "./pages/CadastroGerente";
+import SucessoGerente from "./pages/SucessoGerente";
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro-funcionario" element={<CadastroFuncionario />} />
-        <Route path="/sucesso" element={<SucessoFuncionario />} />
+        <Route path="/sucesso-funcionario" element={<SucessoFuncionario />} />
+        <Route path="/cadastro-gerente" element = {<CadastroGerente/>}/>
+        <Route path="/sucesso-gerente" element = {<SucessoGerente/>}/>
       </Routes>
     </Router>
   );
