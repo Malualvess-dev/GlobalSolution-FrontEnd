@@ -71,11 +71,7 @@ const CadastroFuncionario = () => {
       <div className="relative bg-white w-full max-w-2xl p-10 rounded-3xl shadow-2xl z-20 border border-gray-200">
 
         {/* LINK PARA GERENTE */}
-        <p className="text-right text-sm mb-5">
-          <Link to="/cadastro-gerente" className="text-blue-600 hover:underline">
-            Sou gerente → Acessar cadastro
-          </Link>
-        </p>
+       
 
         {/* LOGO */}
         <div className="flex justify-center mb-4">
@@ -101,9 +97,12 @@ const CadastroFuncionario = () => {
         </h2>
 
         <p className="text-center text-gray-600 mb-8">
-          Preencha o formulário corretamente para criar sua conta.
+          Preencha o formulário para criar sua conta. Caso seja gerente →  
+          <Link to="/cadastro-gerente" className="text-blue-600 hover:underline">
+             Clique aqui
+            </Link>
         </p>
-
+        
         {/* FORM */}
         <form onSubmit={handleSubmit} className="space-y-5">
 

@@ -48,7 +48,7 @@ const Login = () => {
       }
 
       if (tipo === "funcionario") {
-        navigate("/home-funcionario");
+        navigate("/TelaInicialFuncionario");
       } else {
         navigate("/home-gerente");
       }
@@ -75,7 +75,7 @@ const Login = () => {
 
         {/* Ícone */}
         <div className="flex justify-center mb-4">
-          <img src="/iconeLogin.png" alt="Icone Login" className="w-16" />
+          <img src="/iconeSegurança.png" alt="Icone Login" className="w-16" />
         </div>
 
         <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-3">
@@ -150,15 +150,16 @@ const Login = () => {
               Lembrar-me
             </label>
 
-            <button
-              type="button"
-              className="
-                text-blue-600 font-medium hover:text-blue-800 
+             <button
+                type="button"
+                onClick={() => navigate("/atualizarSenha")}
+                className="
+                text-blue-600 font-medium hover:text-blue-800
                 transition-all duration-300 hover:underline
-              "
-            >
-              Esqueci minha senha →
-            </button>
+                "
+                >
+                Esqueci minha senha →
+                </button>
 
           </div>
 

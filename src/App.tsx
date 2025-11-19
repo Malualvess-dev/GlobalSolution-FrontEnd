@@ -6,6 +6,10 @@ import CadastroFuncionario from "./pages/CadastroFuncionario";
 import SucessoFuncionario from "./pages/SucessoFuncionario";
 import CadastroGerente from "./pages/CadastroGerente";
 import SucessoGerente from "./pages/SucessoGerente";
+import AtualizarSenha from "./pages/AtualizarSenha";
+import SenhaAlterada from "./pages/SenhaAlterada";
+import TelaInicialFuncionario from "./pages/TelaInicialFuncionario";
+import CriarTarefa from "./pages/CriarTarefas";
 
 function App() {
   return (
@@ -17,6 +21,10 @@ function App() {
         <Route path="/sucesso-funcionario" element={<SucessoFuncionario />} />
         <Route path="/cadastro-gerente" element = {<CadastroGerente/>}/>
         <Route path="/sucesso-gerente" element = {<SucessoGerente/>}/>
+        <Route path="/atualizarSenha" element = {<AtualizarSenha/>}/>
+        <Route path="/senhaAlterada" element = {<SenhaAlterada/>}/>
+       <Route path="/TelaInicialFuncionario" element={<TelaInicialFuncionario />} />
+       <Route path="/criar-tarefa" element={<CriarTarefa />} />
       </Routes>
     </Router>
   );
