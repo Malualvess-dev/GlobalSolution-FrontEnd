@@ -24,6 +24,10 @@ export default function TelaGerente() {
   const [novoDept, setNovoDept] = useState("");
   const [idGerenteInput, setIdGerenteInput] = useState("");
 
+  // Modal excluir funcionário
+  const [modalExcluir, setModalExcluir] = useState(false);
+  const [funcionarioSelecionado, setFuncionarioSelecionado] = useState<number | null>(null);
+
   // -------- CARREGAR FUNCIONÁRIOS --------
   async function carregarFuncionarios() {
     try {
@@ -39,16 +43,27 @@ export default function TelaGerente() {
     carregarFuncionarios();
   }, []);
 
-  // -------- EXCLUIR FUNCIONÁRIO --------
-  async function excluirFuncionario(id: number) {
-    if (!confirm("Deseja realmente excluir esse funcionário?")) return;
+  // -------- ABRIR MODAL DE CONFIRMAR EXCLUSÃO --------
+  function abrirModalExcluir(id: number) {
+    setFuncionarioSelecionado(id);
+    setModalExcluir(true);
+  }
+
+  // -------- CONFIRMAR EXCLUSÃO --------
+  async function confirmarExclusao() {
+    if (funcionarioSelecionado == null) return;
 
     try {
-      await fetch(`http://localhost:8080/Funcionarios/${id}`, {
+      const resp = await fetch(`http://localhost:8080/Funcionarios/${funcionarioSelecionado}`, {
         method: "DELETE",
       });
 
-      carregarFuncionarios();
+      if (resp.ok) {
+        setModalExcluir(false);
+        carregarFuncionarios();
+      } else {
+        console.log("Erro ao excluir funcionário:", await resp.text());
+      }
     } catch (error) {
       console.log("Erro ao excluir funcionário:", error);
     }
@@ -74,13 +89,10 @@ export default function TelaGerente() {
       });
 
       if (resp.ok) {
-        navigate("/sucesso-departamento")
+        navigate("/sucesso-departamento");
         setModalDeptOpen(false);
-        setNovoDept("");
-        setIdGerenteInput("");
       } else {
-        const erro = await resp.text();
-        alert("Erro ao criar departamento:\n" + erro);
+        alert("Erro ao criar departamento");
       }
 
     } catch (error) {
@@ -114,31 +126,14 @@ export default function TelaGerente() {
         <h1 className="text-3xl font-extrabold text-center text-blue-700">Menu</h1>
 
         <nav className="flex flex-col gap-5 text-gray-700 font-semibold text-lg">
-          <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
-                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
-                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
-                hover:before:w-full" onClick={() => navigate("/gerenciar-humor")}>Gerenciador Humor</button>
-          <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
-                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
-                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
-                hover:before:w-full" onClick={() => navigate("/faq")}>FAQ</button>
-          <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
-                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
-                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
-                hover:before:w-full" onClick={() => navigate("/integrantes")}>Integrantes</button>
-          <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
-                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
-                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
-                hover:before:w-full" onClick={() => navigate("/sobre")}>Sobre</button>
-          <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
-                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
-                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
-                hover:before:w-full" onClick={() => navigate("/contato")}>Contato</button>
-          <button className="hover:text-red-600" onClick={() => navigate("/login")}>Logout</button>
-          <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
-                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
-                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
-                hover:before:w-full" onClick={() => navigate("/lista-departamento")}>Departamento</button>
+          <button onClick={() => navigate("/humor")} className="hover:text-blue-600">Gerenciador Humor</button>
+          <button onClick={() => navigate("/faq")} className="hover:text-blue-600">FAQ</button>
+          <button onClick={() => navigate("/integrantes")} className="hover:text-blue-600">Integrantes</button>
+          <button onClick={() => navigate("/sobre")} className="hover:text-blue-600">Sobre</button>
+          <button onClick={() => navigate("/contato")} className="hover:text-blue-600">Contato</button>
+          <button onClick={() => navigate("/lista-departamento")} className="hover:text-blue-600">Departamento</button>
+          <button onClick={() => navigate("/login")} className="hover:text-red-600">Logout</button>
+          <button onClick={() => navigate("/lista-tarefas")} className="hover:text-red-600">Lista de tarefas</button>
         </nav>
       </aside>
 
@@ -153,19 +148,19 @@ export default function TelaGerente() {
         <div className="flex justify-center gap-6 mb-10">
           <button
             onClick={() => navigate("/cadastro-funcionario")}
-            className="px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold hover:scale-105 shadow">
+            className="px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold shadow hover:scale-105">
             ➕ Cadastrar Funcionário
           </button>
 
           <button
             onClick={() => setModalDeptOpen(true)}
-            className="px-6 py-3 rounded-lg bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold hover:scale-105 shadow">
+            className="px-6 py-3 rounded-lg bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold shadow hover:scale-105">
             🏢 Criar Departamento
           </button>
 
           <button
             onClick={carregarFuncionarios}
-            className="px-6 py-3 rounded-lg bg-white text-gray-700 font-semibold border shadow hover:scale-105">
+            className="px-6 py-3 rounded-lg bg-white text-gray-700 border shadow hover:scale-105">
             🔄 Atualizar lista
           </button>
         </div>
@@ -188,6 +183,7 @@ export default function TelaGerente() {
               <p><b>ID Departamento:</b> {f.id_departamento}</p>
 
               <div className="flex gap-3 mt-5">
+
                 <button
                   onClick={() => navigate(`/editarFuncionario/${f.id_funcionario}`)}
                   className="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 shadow">
@@ -195,16 +191,43 @@ export default function TelaGerente() {
                 </button>
 
                 <button
-                  onClick={() => excluirFuncionario(f.id_funcionario)}
+                  onClick={() => abrirModalExcluir(f.id_funcionario)}
                   className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 shadow">
                   🗑 Excluir
                 </button>
+
               </div>
             </div>
           ))}
         </div>
 
       </main>
+
+      {/* MODAL EXCLUSÃO */}
+      {modalExcluir && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white p-8 rounded-2xl shadow-2xl w-[380px]">
+            <h2 className="text-2xl font-bold text-red-600 mb-4">Confirmar Exclusão</h2>
+            <p className="mb-6">Tem certeza que deseja excluir este funcionário?</p>
+
+            <div className="flex gap-4 justify-between">
+
+              <button
+                onClick={() => setModalExcluir(false)}
+                className="px-6 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400">
+                Cancelar
+              </button>
+
+              <button
+                onClick={confirmarExclusao}
+                className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
+                Excluir
+              </button>
+
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* MODAL CRIAR DEPARTAMENTO */}
       {modalDeptOpen && (
@@ -217,7 +240,6 @@ export default function TelaGerente() {
 
             <form onSubmit={criarDepartamento} className="space-y-4">
 
-              {/* Nome */}
               <input
                 type="text"
                 value={novoDept}
@@ -226,7 +248,6 @@ export default function TelaGerente() {
                 className="w-full p-2 border rounded-lg"
               />
 
-              {/* ID Gerente */}
               <input
                 type="number"
                 value={idGerenteInput}

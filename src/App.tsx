@@ -20,6 +20,7 @@ import Integrantes from "./components/Integrantes";
 import TelaGerente from "./pages/TelaInicialGerente";
 import SuccessDepartamento from "./pages/SucessoDepartamento";
 import ListarDepartamentos from "./pages/ListaDepartamentos";
+import ListaTarefas from "./pages/ListaTarefas";
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
        <Route path="/TelaInicialGerente" element={<TelaGerente />} />
        <Route path="/sucesso-departamento" element={<SuccessDepartamento />} />
        <Route path="/lista-departamento" element={<ListarDepartamentos/>} />
+       <Route path="/lista-tarefas" element={<ListaTarefas/>} />
 
 
       </Routes>

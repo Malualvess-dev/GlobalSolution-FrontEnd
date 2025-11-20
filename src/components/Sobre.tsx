@@ -1,7 +1,10 @@
-import { Link } from "react-router-dom";
+
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 export default function Sobre() {
+    const navigate = useNavigate();
+
   return (
     <div className="min-h-screen flex flex-col items-center bg-[#e6f3ff] relative">
 
@@ -13,15 +16,15 @@ export default function Sobre() {
       {/* Conteúdo */}
       <div className="mt-28 w-full max-w-4xl bg-white rounded-3xl shadow-xl p-10 relative z-10">
 
-         {/* Botão Voltar */}
-      <div className="absolute left-10 top-10 z-10">
-        <Link
-          to="/TelainicialFuncionario"
-          className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition"
+        {/* Botão Voltar */}
+      <div className="absolute top-6 left-6 z-20">
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-2 text-blue-700 font-semibold hover:text-blue-900 transition"
         >
-          <img src="/voltar.jpeg" alt="Voltar" className="w-6" />
-          <span className="font-medium text-sm">Voltar</span>
-        </Link>
+          <img src="/voltar.jpeg" className="w-5" />
+          Voltar
+        </button>
       </div>
 
         {/* Título */}
