@@ -136,10 +136,15 @@ export default function TelaInicialFuncionario() {
             Sobre
         </button>
 
-          <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
+          <button
+            onClick={() => navigate("/contato")}
+            className="text-gray-700 hover:text-blue-500 font-medium transition relative
                 before:absolute before:-bottom-1 before:left-0 before:h-[2px]
                 before:w-0 before:bg-blue-500 before:transition-all before:duration-300
-                hover:before:w-full">Contato</button>
+                hover:before:w-full"
+            >
+            Contato
+        </button>
 
         </nav>
       </aside>
