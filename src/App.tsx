@@ -12,6 +12,7 @@ import TelaInicialFuncionario from "./pages/TelaInicialFuncionario";
 import CriarTarefa from "./pages/CriarTarefas";
 import SucessoTarefa from "./pages/SucessoTarefa";
 import FAQ from "./components/FAQ";
+import Sobre from "./components/Sobre";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
        <Route path="/criar-tarefa" element={<CriarTarefa />} />
        <Route path="/sucesso-tarefa" element={<SucessoTarefa />} />
        <Route path="/faq" element={<FAQ />} />
+       <Route path="/sobre" element={<Sobre />} />
 
 
       </Routes>

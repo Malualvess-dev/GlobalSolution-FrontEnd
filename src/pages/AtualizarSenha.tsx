@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
+
 export default function AtualizarSenha() {
 
   const [tipo, setTipo] = useState("funcionario");
@@ -140,6 +141,8 @@ export default function AtualizarSenha() {
         )}
 
       </div>
+      
     </div>
+    
   );
 }

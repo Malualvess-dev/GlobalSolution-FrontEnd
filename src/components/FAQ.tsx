@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 
 export default function FAQ() {
+  const navigate = useNavigate();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs = [
@@ -22,7 +25,7 @@ export default function FAQ() {
     {
       pergunta: "Como funciona o login de Funcionário e Gerente?",
       resposta:
-        "Funcionários e Gerentes entram via CPF e senha. Cada tipo de usuário é direcionado para sua própria área.",
+        "Funcionários entram via CPF e senha. Gerentes utilizam email e senha. Cada tipo de usuário é direcionado para sua própria área.",
     },
     {
       pergunta: "Meus dados estão seguros?",
@@ -32,7 +35,7 @@ export default function FAQ() {
     {
       pergunta: "É possível recuperar senha?",
       resposta:
-        "Sim. Basta clicar em 'Esqueci minha senha' na tela de login. Você será redirecionado para redefinição.",
+        "Sim. Basta clicar em 'Esqueci minha senha' na tela de login para redefinir sua senha.",
     },
     {
       pergunta: "Como posso entrar em contato com a equipe?",
@@ -46,54 +49,75 @@ export default function FAQ() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-200 p-10 flex justify-center items-start mt-10">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-200 relative flex flex-col">
 
-      <div className="max-w-4xl w-full bg-white/60 shadow-xl backdrop-blur-xl rounded-3xl p-10 border border-gray-300">
+      {/* 🔹 Fundo Tech */}
+      <div className="absolute inset-0 bg-[url('/tech-lines.png')] bg-cover opacity-100 pointer-events-none"></div>
 
-        {/* Título */}
-        <h1 className="text-4xl font-extrabold text-blue-700 mb-4">
-          Perguntas Frequentes
-        </h1>
-        <p className="text-gray-700 mb-10">
-          Aqui você encontra respostas para as dúvidas mais comuns sobre o
-          sistema.
-        </p>
+      {/* 🔹 Conteúdo Principal */}
+      <div className="flex justify-center items-start p-10 relative z-10 flex-1">
+        <div className="max-w-4xl w-full bg-white/60 shadow-xl backdrop-blur-xl rounded-3xl p-10 border border-gray-300 relative">
 
-        {/* FAQ LIST */}
-        <div className="flex flex-col gap-4">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="bg-white shadow-md border border-gray-200 rounded-xl p-4 transition"
-            >
-              <button
-                onClick={() => toggle(index)}
-                className="w-full text-left flex justify-between items-center"
+          {/* 🔹 Botão Voltar */}
+          <button
+            onClick={() => navigate(-1)}
+            className="flex items-center gap-2 text-blue-700 font-semibold mb-6 hover:text-blue-900 transition"
+          >
+            <img src="/voltar.jpeg" alt="voltar" className="w-5" />
+            Voltar
+          </button>
+
+          {/* 🔹 Título */}
+          <h1 className="text-4xl font-extrabold text-blue-700 mb-4">
+            Perguntas Frequentes
+          </h1>
+
+          <p className="text-gray-700 mb-10">
+            Aqui você encontra respostas para as dúvidas mais comuns sobre o sistema.
+          </p>
+
+          {/* 🔹 Lista FAQ */}
+          <div className="flex flex-col gap-4">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="bg-white shadow-md border border-gray-200 rounded-xl p-4 transition relative z-10"
               >
-                <span className="text-lg font-semibold text-blue-700">
-                  {faq.pergunta}
-                </span>
-
-                <span
-                  className={`
-                    font-bold text-xl transition-transform
-                    ${openIndex === index ? "rotate-180 text-blue-700" : "text-gray-500"}
-                  `}
+                <button
+                  onClick={() => toggle(index)}
+                  className="w-full text-left flex justify-between items-center"
                 >
-                  ▼
-                </span>
-              </button>
+                  <span className="text-lg font-semibold text-blue-700">
+                    {faq.pergunta}
+                  </span>
 
-              {/* RESPOSTA */}
-              {openIndex === index && (
-                <p className="mt-3 text-gray-700 border-t pt-3">
-                  {faq.resposta}
-                </p>
-              )}
-            </div>
-          ))}
+                  <span
+                    className={`
+                      font-bold text-xl transition-transform
+                      ${openIndex === index ? "rotate-180 text-blue-700" : "text-gray-500"}
+                    `}
+                  >
+                    ▼
+                  </span>
+                </button>
+
+                {openIndex === index && (
+                  <p className="mt-3 text-gray-700 border-t pt-3">
+                    {faq.resposta}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+
         </div>
       </div>
+
+      {/* 🔹 FOOTER */}
+      <div className="relative z-20">
+        <Footer />
+      </div>
+
     </div>
   );
 }

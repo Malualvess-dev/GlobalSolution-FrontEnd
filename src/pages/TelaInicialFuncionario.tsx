@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
+
 interface Tarefa {
   id_tarefa: number;
   nome_tarefa: string;
@@ -111,21 +112,29 @@ export default function TelaInicialFuncionario() {
                 hover:before:w-full">Gerenciador de Humor</button>
 
          <button
-  onClick={() => navigate("/faq")}
-  className="hover:text-blue-600 transition"
->
-  FAQ
-</button>
+            onClick={() => navigate("/faq")}
+            className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full"
+            >
+            FAQ
+        </button>
 
           <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
                 before:absolute before:-bottom-1 before:left-0 before:h-[2px]
                 before:w-0 before:bg-blue-500 before:transition-all before:duration-300
                 hover:before:w-full">Integrantes</button>
 
-          <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
+          <button
+            onClick={() => navigate("/sobre")}
+            className="text-gray-700 hover:text-blue-500 font-medium transition relative
                 before:absolute before:-bottom-1 before:left-0 before:h-[2px]
                 before:w-0 before:bg-blue-500 before:transition-all before:duration-300
-                hover:before:w-full">Sobre</button>
+                hover:before:w-full"
+            >
+            Sobre
+        </button>
 
           <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
                 before:absolute before:-bottom-1 before:left-0 before:h-[2px]
@@ -256,9 +265,12 @@ export default function TelaInicialFuncionario() {
             </div>
 
           </div>
+          
         </div>
       )}
 
     </div>
+
+    
   );
 }
