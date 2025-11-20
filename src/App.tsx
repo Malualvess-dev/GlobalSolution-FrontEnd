@@ -14,6 +14,8 @@ import SucessoTarefa from "./pages/SucessoTarefa";
 import FAQ from "./components/FAQ";
 import Sobre from "./components/Sobre";
 import Contato from "./components/Contato";
+import GerenciadorHumor from "./pages/GerenciadorHumor";
+import SucessoHumor from "./pages/SucessoHumor";
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
        <Route path="/faq" element={<FAQ />} />
        <Route path="/sobre" element={<Sobre />} />
        <Route path="/contato" element={<Contato />} />
+       <Route path="/humor" element={<GerenciadorHumor />} />
+       <Route path="/sucesso-humor" element={<SucessoHumor />} />
 
 
       </Routes>

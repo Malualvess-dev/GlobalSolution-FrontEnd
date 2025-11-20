@@ -106,10 +106,15 @@ export default function TelaInicialFuncionario() {
         </h1>
 
         <nav className="flex flex-col gap-5 text-gray-700 font-semibold text-lg">
-          <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
+          <button
+            onClick={() => navigate("/humor")}
+            className="text-gray-700 hover:text-blue-500 font-medium transition relative
                 before:absolute before:-bottom-1 before:left-0 before:h-[2px]
                 before:w-0 before:bg-blue-500 before:transition-all before:duration-300
-                hover:before:w-full">Gerenciador de Humor</button>
+                hover:before:w-full"
+            >
+            Gerenciador Humor
+        </button>
 
          <button
             onClick={() => navigate("/faq")}
