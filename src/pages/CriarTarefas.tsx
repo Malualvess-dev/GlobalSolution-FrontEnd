@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 export default function CriarTarefa() {
+    const navigate = useNavigate();
+
+
   const [form, setForm] = useState({
     nome_tarefa: "",
     epico: "",
@@ -18,14 +23,14 @@ export default function CriarTarefa() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/api/tarefas", {
+      const response = await fetch("http://localhost:8080/Tarefas", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
 
       if (response.ok) {
-        alert("Tarefa criada com sucesso!");
+        navigate("/sucesso-tarefa");
       } else {
         alert("Erro ao criar tarefa.");
       }

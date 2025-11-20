@@ -10,6 +10,7 @@ import AtualizarSenha from "./pages/AtualizarSenha";
 import SenhaAlterada from "./pages/SenhaAlterada";
 import TelaInicialFuncionario from "./pages/TelaInicialFuncionario";
 import CriarTarefa from "./pages/CriarTarefas";
+import SucessoTarefa from "./pages/SucessoTarefa";
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
         <Route path="/senhaAlterada" element = {<SenhaAlterada/>}/>
        <Route path="/TelaInicialFuncionario" element={<TelaInicialFuncionario />} />
        <Route path="/criar-tarefa" element={<CriarTarefa />} />
+       <Route path="/sucesso-tarefa" element={<SucessoTarefa />} />
+
       </Routes>
     </Router>
   );
