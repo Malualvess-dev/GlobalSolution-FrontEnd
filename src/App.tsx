@@ -17,6 +17,7 @@ import Contato from "./components/Contato";
 import GerenciadorHumor from "./pages/GerenciadorHumor";
 import SucessoHumor from "./pages/SucessoHumor";
 import Integrantes from "./components/Integrantes";
+import TelaGerente from "./pages/TelaInicialGerente";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
        <Route path="/humor" element={<GerenciadorHumor />} />
        <Route path="/sucesso-humor" element={<SucessoHumor />} />
        <Route path="/integrantes" element={<Integrantes />} />
+       <Route path="/TelaInicialGerente" element={<TelaGerente />} />
 
 
       </Routes>

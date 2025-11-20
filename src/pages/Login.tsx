@@ -50,7 +50,7 @@ const Login = () => {
       if (tipo === "funcionario") {
         navigate("/TelaInicialFuncionario");
       } else {
-        navigate("/home-gerente");
+        navigate("/TelaInicialGerente");
       }
     } catch (error) {
       alert("Erro ao conectar ao servidor.");
