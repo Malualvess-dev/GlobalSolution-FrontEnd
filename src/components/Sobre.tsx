@@ -94,7 +94,7 @@ export default function Sobre() {
             <h2 className="text-xl font-bold text-blue-700 mb-3">👥 Quem desenvolveu o projeto?</h2>
             <p className="text-gray-700 leading-relaxed">
               Este projeto foi desenvolvido pela equipe do Global Solution – FIAP, unindo dedicação,
-              criatividade e as mais recentes tecnologias de desenvolvimento de software.
+              criatividade e as mais recentes tecnologias de desenvolvimento de software. As informações da equipe estão na página de integrantes
             </p>
           </div>
 

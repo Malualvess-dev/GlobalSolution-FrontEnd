@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 export default function GerenciadorHumor() {
 
@@ -61,9 +61,12 @@ export default function GerenciadorHumor() {
             onClick={() => navigate(-1)}
             className="flex items-center gap-2 text-blue-600 hover:text-blue-800 transition"
           >
-            <img src="/iconeCasinha.png" className="w-6 h-6" />
+            <img src="/voltar.jpeg" className="w-6 h-6" />
             Voltar
           </button>
+
+        
+
         </div>
 
         {/* TÍTULO */}

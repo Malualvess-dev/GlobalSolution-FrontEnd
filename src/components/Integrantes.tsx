@@ -1,0 +1,111 @@
+import { useNavigate } from "react-router-dom";
+
+export default function Integrantes() {
+  const navigate = useNavigate();
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-200 flex flex-col items-center relative">
+
+      {/* Fundo Tech */}
+      <div className="absolute inset-0 bg-[url('/tech-lines.png')] bg-cover opacity-100 pointer-events-none"></div>
+
+      {/* Botão Voltar */}
+      <div className="absolute top-6 left-6 z-20">
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-2 text-blue-700 font-semibold hover:text-blue-900 transition"
+        >
+          <img src="/voltar.jpeg" className="w-5" />
+          Voltar
+        </button>
+      </div>
+
+      {/* Título */}
+      <h1 className="text-5xl font-extrabold text-blue-800 mt-20 mb-3 tracking-tight z-10">
+        Nossa Equipe
+      </h1>
+
+      <p className="text-gray-700 text-lg mb-16 max-w-2xl text-center z-10">
+        Conheça os integrantes responsáveis pelo desenvolvimento e criação completa do sistema.
+      </p>
+
+      {/* Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-16 z-10 pb-24 px-10">
+
+        {/* CARD MODEL */}
+        {[
+          {
+            nome: "Liana Lyumi Morisita Fujisima",
+            rm: "565698",
+            cursos: [
+              "ARTIFICIAL INTELLIGENCE & CHATBOT",
+              "COMPUTATIONAL THINKING USING PYTHON"
+            ],
+            img: "/fotoLiana.jpg"
+          },
+          {
+            nome: "Maria Luiza Alves De Aquino",
+            rm: "561802",
+            cursos: [
+              "DOMAIN DRIVEN DESIGN USING JAVA",
+              "FRONT-END DESIGN ENGINEERING"
+            ],
+            img: "/fotoMalu.jpg"
+          },
+          {
+            nome: "Victor William Hwan Cho",
+            rm: "565382",
+            cursos: [
+              "SOFTWARE ENGINEERING AND BUSINESS MODEL",
+              "BUILDING RELATIONAL DATABASE"
+            ],
+            img: "/fotoVitor.jpg"
+          }
+        ].map((pessoa) => (
+          <div
+            key={pessoa.rm}
+            className="
+              bg-white/70 backdrop-blur-xl 
+              border border-gray-200 
+              shadow-[0_8px_30px_rgba(0,0,0,0.12)]
+              rounded-[36px] px-10 py-12 
+              flex flex-col items-center text-center
+              w-[380px] h-[500px]
+              transform transition-all duration-300
+              hover:scale-[1.03] hover:shadow-[0_15px_40px_rgba(0,0,0,0.18)]
+              hover:border-blue-400
+            "
+          >
+            {/* Foto */}
+            <div className="
+              w-40 h-40 rounded-full overflow-hidden mb-6
+              ring-4 ring-blue-300 shadow-lg hover:shadow-blue-400/60 transition
+            ">
+              <img
+                src={pessoa.img}
+                alt="Foto do integrante"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Nome */}
+            <h2 className="text-2xl font-bold text-blue-800 leading-tight mb-1">
+              {pessoa.nome}
+            </h2>
+
+            {/* RM */}
+            <p className="text-gray-600 font-medium mb-4">RM: {pessoa.rm}</p>
+
+            {/* Cursos */}
+            <ul className="text-gray-700 font-semibold text-sm space-y-1 uppercase tracking-wide">
+              {pessoa.cursos.map((c) => (
+                <li key={c}>{c}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+
+      </div>
+    </div>
+  );
+}

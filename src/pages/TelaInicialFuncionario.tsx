@@ -126,10 +126,15 @@ export default function TelaInicialFuncionario() {
             FAQ
         </button>
 
-          <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
+          <button
+            onClick={() => navigate("/integrantes")}
+            className="text-gray-700 hover:text-blue-500 font-medium transition relative
                 before:absolute before:-bottom-1 before:left-0 before:h-[2px]
                 before:w-0 before:bg-blue-500 before:transition-all before:duration-300
-                hover:before:w-full">Integrantes</button>
+                hover:before:w-full"
+            >
+            Integrantes
+        </button>
 
           <button
             onClick={() => navigate("/sobre")}
@@ -152,6 +157,26 @@ export default function TelaInicialFuncionario() {
         </button>
 
         </nav>
+
+        {/* ---- Botão Sair ---- */}
+    <div className="mt-10 pt-6 border-t border-gray-300">
+        <button
+        onClick={() => {
+      // Em caso de uso futuro de login persistente:
+      localStorage.clear();
+
+      navigate("/login");
+    }}
+    className="
+      w-full text-left text-red-600 font-semibold 
+      hover:text-red-800 transition
+    "
+  >
+    🔓 Sair
+  </button>
+</div>
+
+        
       </aside>
 
       {/* ---------------- CONTEÚDO ---------------- */}
