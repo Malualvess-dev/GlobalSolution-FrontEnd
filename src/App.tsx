@@ -18,6 +18,9 @@ import GerenciadorHumor from "./pages/GerenciadorHumor";
 import SucessoHumor from "./pages/SucessoHumor";
 import Integrantes from "./components/Integrantes";
 import TelaGerente from "./pages/TelaInicialGerente";
+import SuccessDepartamento from "./pages/SucessoDepartamento";
+import ListarDepartamentos from "./pages/ListaDepartamentos";
+
 
 function App() {
   return (
@@ -41,6 +44,8 @@ function App() {
        <Route path="/sucesso-humor" element={<SucessoHumor />} />
        <Route path="/integrantes" element={<Integrantes />} />
        <Route path="/TelaInicialGerente" element={<TelaGerente />} />
+       <Route path="/sucesso-departamento" element={<SuccessDepartamento />} />
+       <Route path="/lista-departamento" element={<ListarDepartamentos/>} />
 
 
       </Routes>

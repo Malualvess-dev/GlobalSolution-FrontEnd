@@ -74,7 +74,7 @@ export default function TelaGerente() {
       });
 
       if (resp.ok) {
-        alert("Departamento criado com sucesso!");
+        navigate("/sucesso-departamento")
         setModalDeptOpen(false);
         setNovoDept("");
         setIdGerenteInput("");
@@ -114,12 +114,31 @@ export default function TelaGerente() {
         <h1 className="text-3xl font-extrabold text-center text-blue-700">Menu</h1>
 
         <nav className="flex flex-col gap-5 text-gray-700 font-semibold text-lg">
-          <button className="hover:text-blue-600" onClick={() => navigate("/gerenciar-humor")}>Gerenciador Humor</button>
-          <button className="hover:text-blue-600" onClick={() => navigate("/faq")}>FAQ</button>
-          <button className="hover:text-blue-600" onClick={() => navigate("/integrantes")}>Integrantes</button>
-          <button className="hover:text-blue-600" onClick={() => navigate("/sobre")}>Sobre</button>
-          <button className="hover:text-blue-600" onClick={() => navigate("/contato")}>Contato</button>
+          <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full" onClick={() => navigate("/gerenciar-humor")}>Gerenciador Humor</button>
+          <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full" onClick={() => navigate("/faq")}>FAQ</button>
+          <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full" onClick={() => navigate("/integrantes")}>Integrantes</button>
+          <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full" onClick={() => navigate("/sobre")}>Sobre</button>
+          <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full" onClick={() => navigate("/contato")}>Contato</button>
           <button className="hover:text-red-600" onClick={() => navigate("/login")}>Logout</button>
+          <button className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full" onClick={() => navigate("/lista-departamento")}>Departamento</button>
         </nav>
       </aside>
 
