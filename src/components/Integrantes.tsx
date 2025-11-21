@@ -55,7 +55,17 @@ export default function Integrantes() {
       <h1 className="text-5xl font-extrabold text-blue-800 mt-20 mb-3 tracking-tight z-10">
         Nossa Equipe
       </h1>
-
+      
+ {/* Botão Voltar */}
+      <div className="absolute top-6 left-6 z-20">
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-2 text-blue-700 font-semibold hover:text-blue-900 transition"
+        >
+          <img src="/voltar.jpeg" className="w-5" />
+          Voltar
+        </button>
+      </div>
       <p className="text-gray-700 text-lg mb-16 max-w-2xl text-center z-10">
         Conheça os integrantes responsáveis pelo desenvolvimento e criação completa do sistema.
       </p>
