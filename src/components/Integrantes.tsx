@@ -1,7 +1,47 @@
 import { useNavigate } from "react-router-dom";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 
 export default function Integrantes() {
   const navigate = useNavigate();
+
+  const membros = [
+    {
+      nome: "Liana Lyumi Morisita Fujisima",
+      rm: "565698",
+      cursos: [
+        "ARTIFICIAL INTELLIGENCE & CHATBOT",
+        "COMPUTATIONAL THINKING USING PYTHON"
+      ],
+      sala: "1TDSPI",
+      img: "/fotoLiana.jpg",
+      linkedin: "https://www.linkedin.com/in/liana-lyumi-morisita-fujisima-22368a367/",
+      github: "https://github.com/lianafujisima"
+    },
+    {
+      nome: "Maria Luiza Alves De Aquino",
+      rm: "561802",
+      cursos: [
+        "DOMAIN DRIVEN DESIGN USING JAVA",
+        "FRONT-END DESIGN ENGINEERING"
+      ],
+      sala: "1TDSPI",
+      img: "/fotoMalu.jpg",
+      linkedin: "https://www.linkedin.com/in/maluaquino/",
+      github: "https://github.com/Malualvess-dev"
+    },
+    {
+      nome: "Victor William Hwan Cho",
+      rm: "565382",
+      cursos: [
+        "SOFTWARE ENGINEERING AND BUSINESS MODEL",
+        "BUILDING RELATIONAL DATABASE"
+      ],
+      sala: "1TDSPI",
+      img: "/fotoVitor.jpg",
+      linkedin: "https://www.linkedin.com/in/victor-cho-91a508367?trk=contact-info",
+      github: "https://github.com/Victorcho05"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-200 flex flex-col items-center relative">
@@ -32,36 +72,7 @@ export default function Integrantes() {
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-16 z-10 pb-24 px-10">
 
-        {/* CARD MODEL */}
-        {[
-          {
-            nome: "Liana Lyumi Morisita Fujisima",
-            rm: "565698",
-            cursos: [
-              "ARTIFICIAL INTELLIGENCE & CHATBOT",
-              "COMPUTATIONAL THINKING USING PYTHON"
-            ],
-            img: "/fotoLiana.jpg"
-          },
-          {
-            nome: "Maria Luiza Alves De Aquino",
-            rm: "561802",
-            cursos: [
-              "DOMAIN DRIVEN DESIGN USING JAVA",
-              "FRONT-END DESIGN ENGINEERING"
-            ],
-            img: "/fotoMalu.jpg"
-          },
-          {
-            nome: "Victor William Hwan Cho",
-            rm: "565382",
-            cursos: [
-              "SOFTWARE ENGINEERING AND BUSINESS MODEL",
-              "BUILDING RELATIONAL DATABASE"
-            ],
-            img: "/fotoVitor.jpg"
-          }
-        ].map((pessoa) => (
+        {membros.map((pessoa) => (
           <div
             key={pessoa.rm}
             className="
@@ -70,7 +81,7 @@ export default function Integrantes() {
               shadow-[0_8px_30px_rgba(0,0,0,0.12)]
               rounded-[36px] px-10 py-12 
               flex flex-col items-center text-center
-              w-[380px] h-[500px]
+              w-[380px] h-[560px]
               transform transition-all duration-300
               hover:scale-[1.03] hover:shadow-[0_15px_40px_rgba(0,0,0,0.18)]
               hover:border-blue-400
@@ -94,14 +105,41 @@ export default function Integrantes() {
             </h2>
 
             {/* RM */}
-            <p className="text-gray-600 font-medium mb-4">RM: {pessoa.rm}</p>
+            <p className="text-gray-600 font-medium">
+              RM: {pessoa.rm}
+            </p>
+
+            {/* SALA */}
+            <p className="text-gray-600 font-medium mb-4">
+              Sala: {pessoa.sala}
+            </p>
 
             {/* Cursos */}
-            <ul className="text-gray-700 font-semibold text-sm space-y-1 uppercase tracking-wide">
+            <ul className="text-gray-700 font-semibold text-sm space-y-1 uppercase tracking-wide mb-5">
               {pessoa.cursos.map((c) => (
                 <li key={c}>{c}</li>
               ))}
             </ul>
+
+            {/* Redes Sociais */}
+            <div className="flex gap-6 mt-4">
+              <a
+                href={pessoa.linkedin}
+                target="_blank"
+                className="text-blue-700 hover:text-blue-900 transition text-3xl"
+              >
+                <FaLinkedin />
+              </a>
+
+              <a
+                href={pessoa.github}
+                target="_blank"
+                className="text-gray-800 hover:text-black transition text-3xl"
+              >
+                <FaGithub />
+              </a>
+            </div>
+
           </div>
         ))}
 
