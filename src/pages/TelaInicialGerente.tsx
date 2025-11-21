@@ -60,7 +60,7 @@ export default function TelaInicialGerente() {
       });
 
       if (resp.ok) {
-        alert("Departamento criado com sucesso!");
+        navigate("/sucesso-departamento")
         setNovoDept("");
         setIdGerenteInput("");
         setBoxDeptOpen(false);
@@ -106,6 +106,7 @@ export default function TelaInicialGerente() {
           <button onClick={() => navigate("/sobre")} className="hover:text-blue-600 transition">Sobre</button>
           <button onClick={() => navigate("/contato")} className="hover:text-blue-600 transition">Contato</button>
           <button onClick={() => navigate("/login")} className="hover:text-red-600 transition">Logout</button>
+          <button onClick={() => navigate("/lista-departamento")} className="hover:text-red-600 transition">Lista departamentos</button>
         </nav>
       </aside>
 
