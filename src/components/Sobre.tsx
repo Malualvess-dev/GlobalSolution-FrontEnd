@@ -101,7 +101,13 @@ export default function Sobre() {
             </p>
           </div>
 
-         
+          {/* MISSÃO */}
+          <div className="bg-blue-50 p-6 rounded-2xl shadow-md border border-blue-100">
+            <h2 className="text-xl font-bold text-blue-700 mb-3">🚀 Nossa missão</h2>
+            <p className="text-gray-700 leading-relaxed">
+              Criar soluções inteligentes que simplifiquem processos, incentivem produtividade e ofereçam uma experiência moderna e agradável ao usuário.
+            </p>
+          </div>
 
         </div>
       </div>
