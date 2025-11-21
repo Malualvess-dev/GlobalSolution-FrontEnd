@@ -99,14 +99,38 @@ export default function TelaInicialGerente() {
         <h1 className="text-3xl font-extrabold text-center text-blue-700">Menu</h1>
 
         <nav className="flex flex-col gap-5 text-gray-700 font-semibold text-lg">
-          <button onClick={() => navigate("/tela-inicial-gerente")} className="hover:text-blue-600 transition">Início</button>
-          <button onClick={() => navigate("/gerenciar-humor")} className="hover:text-blue-600 transition">Gerenciador Humor</button>
-          <button onClick={() => navigate("/faq")} className="hover:text-blue-600 transition">FAQ</button>
-          <button onClick={() => navigate("/integrantes")} className="hover:text-blue-600 transition">Integrantes</button>
-          <button onClick={() => navigate("/sobre")} className="hover:text-blue-600 transition">Sobre</button>
-          <button onClick={() => navigate("/contato")} className="hover:text-blue-600 transition">Contato</button>
-          <button onClick={() => navigate("/login")} className="hover:text-red-600 transition">Logout</button>
-          <button onClick={() => navigate("/lista-departamento")} className="hover:text-red-600 transition">Lista departamentos</button>
+          <button onClick={() => navigate("/tela-inicial-gerente")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full">Início</button>
+          <button onClick={() => navigate("/gerenciar-humor")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full">Gerenciador Humor</button>
+          <button onClick={() => navigate("/faq")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full">FAQ</button>
+          <button onClick={() => navigate("/integrantes")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full">Integrantes</button>
+          <button onClick={() => navigate("/sobre")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full">Sobre</button>
+          <button onClick={() => navigate("/contato")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full">Contato</button>
+          <button onClick={() => navigate("/login")} className="text-gray-700 hover:text-red-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-red-500 before:transition-all before:duration-300
+                hover:before:w-full">Logout</button>
+          <button onClick={() => navigate("/lista-departamento")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full">Lista departamentos</button>
         </nav>
       </aside>
 
