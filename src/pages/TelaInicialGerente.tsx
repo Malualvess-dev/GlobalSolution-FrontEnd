@@ -126,14 +126,35 @@ export default function TelaGerente() {
         <h1 className="text-3xl font-extrabold text-center text-blue-700">Menu</h1>
 
         <nav className="flex flex-col gap-5 text-gray-700 font-semibold text-lg">
-          <button onClick={() => navigate("/humor")} className="hover:text-blue-600">Gerenciador Humor</button>
-          <button onClick={() => navigate("/faq")} className="hover:text-blue-600">FAQ</button>
-          <button onClick={() => navigate("/integrantes")} className="hover:text-blue-600">Integrantes</button>
-          <button onClick={() => navigate("/sobre")} className="hover:text-blue-600">Sobre</button>
-          <button onClick={() => navigate("/contato")} className="hover:text-blue-600">Contato</button>
-          <button onClick={() => navigate("/lista-departamento")} className="hover:text-blue-600">Departamento</button>
+          <button onClick={() => navigate("/humor")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full">Gerenciador Humor</button>
+          <button onClick={() => navigate("/faq")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full">FAQ</button>
+          <button onClick={() => navigate("/integrantes")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full">Integrantes</button>
+          <button onClick={() => navigate("/sobre")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full">Sobre</button>
+          <button onClick={() => navigate("/contato")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full">Contato</button>
+          <button onClick={() => navigate("/lista-departamento")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full">Departamento</button>
           <button onClick={() => navigate("/login")} className="hover:text-red-600">Logout</button>
-          <button onClick={() => navigate("/lista-tarefas")} className="hover:text-red-600">Lista de tarefas</button>
+          <button onClick={() => navigate("/lista-tarefas")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
+                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
+                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
+                hover:before:w-full">Lista de tarefas</button>
         </nav>
       </aside>
 
