@@ -13,26 +13,23 @@ interface Funcionario {
   id_departamento: number;
 }
 
-export default function TelaGerente() {
+export default function TelaInicialGerente() {
   const navigate = useNavigate();
 
   const [funcionarios, setFuncionarios] = useState<Funcionario[]>([]);
-  const [openMenu, setOpenMenu] = useState(false);
-
-  // Modal criar departamento
-  const [modalDeptOpen, setModalDeptOpen] = useState(false);
   const [novoDept, setNovoDept] = useState("");
   const [idGerenteInput, setIdGerenteInput] = useState("");
 
-  // Modal excluir funcionário
-  const [modalExcluir, setModalExcluir] = useState(false);
-  const [funcionarioSelecionado, setFuncionarioSelecionado] = useState<number | null>(null);
+  const [open, setOpen] = useState(false);
 
-  // -------- CARREGAR FUNCIONÁRIOS --------
+  // Box criação departamento
+  const [boxDeptOpen, setBoxDeptOpen] = useState(false);
+
+  // ------------------- GET FUNCIONÁRIOS -------------------
   async function carregarFuncionarios() {
     try {
-      const response = await fetch("http://localhost:8080/Funcionarios");
-      const data = await response.json();
+      const resp = await fetch("http://localhost:8080/Funcionarios");
+      const data = await resp.json();
       setFuncionarios(data);
     } catch (error) {
       console.log("Erro ao carregar funcionários:", error);
@@ -43,33 +40,7 @@ export default function TelaGerente() {
     carregarFuncionarios();
   }, []);
 
-  // -------- ABRIR MODAL DE CONFIRMAR EXCLUSÃO --------
-  function abrirModalExcluir(id: number) {
-    setFuncionarioSelecionado(id);
-    setModalExcluir(true);
-  }
-
-  // -------- CONFIRMAR EXCLUSÃO --------
-  async function confirmarExclusao() {
-    if (funcionarioSelecionado == null) return;
-
-    try {
-      const resp = await fetch(`http://localhost:8080/Funcionarios/${funcionarioSelecionado}`, {
-        method: "DELETE",
-      });
-
-      if (resp.ok) {
-        setModalExcluir(false);
-        carregarFuncionarios();
-      } else {
-        console.log("Erro ao excluir funcionário:", await resp.text());
-      }
-    } catch (error) {
-      console.log("Erro ao excluir funcionário:", error);
-    }
-  }
-
-  // -------- CRIAR DEPARTAMENTO --------
+  // ------------------- CRIAR DEPARTAMENTO -------------------
   async function criarDepartamento(e: React.FormEvent) {
     e.preventDefault();
 
@@ -84,116 +55,89 @@ export default function TelaGerente() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           nome_departamento: novoDept,
-          id_gerente: Number(idGerenteInput)
+          id_gerente: Number(idGerenteInput),
         }),
       });
 
       if (resp.ok) {
-        navigate("/sucesso-departamento");
-        setModalDeptOpen(false);
+        alert("Departamento criado com sucesso!");
+        setNovoDept("");
+        setIdGerenteInput("");
+        setBoxDeptOpen(false);
       } else {
         alert("Erro ao criar departamento");
       }
-
     } catch (error) {
-      console.log("Erro:", error);
+      alert("Erro ao criar departamento!");
     }
   }
 
   return (
-    <div className="min-h-screen flex bg-gradient-to-br from-blue-50 to-blue-200 text-gray-900 relative">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-200 text-gray-900 relative">
 
-      {/* Fundo tech */}
-      <div className="absolute inset-0 bg-[url('/tech-lines.png')] bg-cover opacity-30 pointer-events-none"></div>
+      {/* Fundo Tech */}
+      <div className="absolute inset-0 bg-[url('/tech-lines.png')] bg-cover opacity-20 pointer-events-none"></div>
 
-      {/* Botão menu */}
+      {/* Botão Menu */}
       <button
-        onClick={() => setOpenMenu(!openMenu)}
-        className="absolute top-6 left-6 z-30 p-3 rounded-xl bg-white shadow border hover:scale-105 transition">
+        onClick={() => setOpen(!open)}
+        className="absolute top-6 left-6 z-30 p-3 rounded-xl bg-white shadow border hover:scale-105 transition"
+      >
         <img src="/menu.jpeg" alt="menu" className="w-6" />
       </button>
 
-      {/* SIDEBAR */}
+      {/* Sidebar */}
       <aside
         className={`
           fixed top-0 left-0 h-full w-72
           bg-white/80 backdrop-blur-xl border-r border-gray-300
           p-10 flex flex-col gap-8 shadow-xl z-20
-          transform transition-transform duration-300
-          ${openMenu ? "translate-x-0" : "-translate-x-full"}
+          transition-transform duration-300
+          ${open ? "translate-x-0" : "-translate-x-full"}
         `}
       >
         <h1 className="text-3xl font-extrabold text-center text-blue-700">Menu</h1>
 
         <nav className="flex flex-col gap-5 text-gray-700 font-semibold text-lg">
-          <button onClick={() => navigate("/humor")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
-                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
-                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
-                hover:before:w-full">Gerenciador Humor</button>
-          <button onClick={() => navigate("/faq")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
-                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
-                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
-                hover:before:w-full">FAQ</button>
-          <button onClick={() => navigate("/integrantes")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
-                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
-                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
-                hover:before:w-full">Integrantes</button>
-          <button onClick={() => navigate("/sobre")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
-                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
-                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
-                hover:before:w-full">Sobre</button>
-          <button onClick={() => navigate("/contato")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
-                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
-                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
-                hover:before:w-full">Contato</button>
-          <button onClick={() => navigate("/lista-departamento")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
-                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
-                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
-                hover:before:w-full">Departamento</button>
-          <button onClick={() => navigate("/login")} className="hover:text-red-600">Logout</button>
-          <button onClick={() => navigate("/lista-tarefas")} className="text-gray-700 hover:text-blue-500 font-medium transition relative
-                before:absolute before:-bottom-1 before:left-0 before:h-[2px]
-                before:w-0 before:bg-blue-500 before:transition-all before:duration-300
-                hover:before:w-full">Lista de tarefas</button>
+          <button onClick={() => navigate("/tela-inicial-gerente")} className="hover:text-blue-600 transition">Início</button>
+          <button onClick={() => navigate("/gerenciar-humor")} className="hover:text-blue-600 transition">Gerenciador Humor</button>
+          <button onClick={() => navigate("/faq")} className="hover:text-blue-600 transition">FAQ</button>
+          <button onClick={() => navigate("/integrantes")} className="hover:text-blue-600 transition">Integrantes</button>
+          <button onClick={() => navigate("/sobre")} className="hover:text-blue-600 transition">Sobre</button>
+          <button onClick={() => navigate("/contato")} className="hover:text-blue-600 transition">Contato</button>
+          <button onClick={() => navigate("/login")} className="hover:text-red-600 transition">Logout</button>
         </nav>
       </aside>
 
-      {/* CONTEÚDO */}
+      {/* Conteúdo Principal */}
       <main className="flex-1 p-14 relative z-10">
 
-        <h2 className="text-center text-4xl font-extrabold text-blue-800 mb-10">
+        <h2 className="text-center text-5xl font-extrabold text-blue-800 mb-16 tracking-wide drop-shadow-sm">
           Painel do Gerente
         </h2>
 
-        {/* Botões principais */}
-        <div className="flex justify-center gap-6 mb-10">
-          <button
-            onClick={() => navigate("/cadastro-funcionario")}
-            className="px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold shadow hover:scale-105">
-            ➕ Cadastrar Funcionário
-          </button>
+        {/* TÍTULO + BOTÃO VERDE */}
+        <div className="flex justify-between items-center max-w-5xl mx-auto mb-10 px-4">
+          <h3 className="text-4xl font-bold text-blue-700">Funcionários Cadastrados</h3>
 
           <button
-            onClick={() => setModalDeptOpen(true)}
-            className="px-6 py-3 rounded-lg bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold shadow hover:scale-105">
-            🏢 Criar Departamento
-          </button>
-
-          <button
-            onClick={carregarFuncionarios}
-            className="px-6 py-3 rounded-lg bg-white text-gray-700 border shadow hover:scale-105">
-            🔄 Atualizar lista
+            onClick={() => setBoxDeptOpen(true)}
+            className="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-xl shadow hover:scale-105 transition"
+          >
+            ➕ Criar Departamento
           </button>
         </div>
 
-        {/* LISTAGEM */}
-        <div className="grid grid-cols-2 gap-10 px-10">
-          {funcionarios.map(f => (
+        {/* LISTA DE FUNCIONÁRIOS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 px-5 max-w-6xl mx-auto">
+          {funcionarios.map((f) => (
             <div
               key={f.id_funcionario}
-              className="p-6 bg-white shadow-xl border border-gray-300 rounded-2xl">
-
-              <h3 className="text-2xl font-bold text-blue-700 mb-3">{f.nome}</h3>
+              className="p-10 bg-white rounded-3xl shadow-lg border hover:shadow-2xl transition-all duration-200"
+            >
+              <h3 className="text-3xl font-bold text-blue-700 mb-6">
+                {f.nome}
+              </h3>
 
               <p><b>CPF:</b> {f.cpf}</p>
               <p><b>Email:</b> {f.email}</p>
@@ -203,59 +147,20 @@ export default function TelaGerente() {
               <p><b>ID Gerente:</b> {f.id_gerente}</p>
               <p><b>ID Departamento:</b> {f.id_departamento}</p>
 
-              <div className="flex gap-3 mt-5">
-
-                <button
-                  onClick={() => navigate(`/editarFuncionario/${f.id_funcionario}`)}
-                  className="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 shadow">
-                  ✏ Editar
-                </button>
-
-                <button
-                  onClick={() => abrirModalExcluir(f.id_funcionario)}
-                  className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 shadow">
-                  🗑 Excluir
-                </button>
-
-              </div>
+            
             </div>
           ))}
         </div>
 
       </main>
 
-      {/* MODAL EXCLUSÃO */}
-      {modalExcluir && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white p-8 rounded-2xl shadow-2xl w-[380px]">
-            <h2 className="text-2xl font-bold text-red-600 mb-4">Confirmar Exclusão</h2>
-            <p className="mb-6">Tem certeza que deseja excluir este funcionário?</p>
+      {/* BOX DE CRIAÇÃO DE DEPARTAMENTO */}
+      {boxDeptOpen && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
 
-            <div className="flex gap-4 justify-between">
+          <div className="bg-white/90 backdrop-blur-xl p-8 rounded-2xl shadow-2xl w-[380px] border border-gray-200">
 
-              <button
-                onClick={() => setModalExcluir(false)}
-                className="px-6 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400">
-                Cancelar
-              </button>
-
-              <button
-                onClick={confirmarExclusao}
-                className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">
-                Excluir
-              </button>
-
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* MODAL CRIAR DEPARTAMENTO */}
-      {modalDeptOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-40">
-
-          <div className="bg-white p-8 rounded-3xl shadow-xl w-[380px]">
-            <h2 className="text-xl font-bold mb-4 text-blue-700">
+            <h2 className="text-2xl font-bold text-blue-700 text-center mb-4">
               Criar Departamento
             </h2>
 
@@ -263,32 +168,36 @@ export default function TelaGerente() {
 
               <input
                 type="text"
+                placeholder="Nome do departamento"
                 value={novoDept}
                 onChange={(e) => setNovoDept(e.target.value)}
-                placeholder="Nome do departamento"
-                className="w-full p-2 border rounded-lg"
+                className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-300 outline-none"
               />
 
               <input
                 type="number"
+                placeholder="ID do gerente"
                 value={idGerenteInput}
                 onChange={(e) => setIdGerenteInput(e.target.value)}
-                placeholder="ID do gerente"
-                className="w-full p-2 border rounded-lg"
+                className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-300 outline-none"
               />
 
-              <button
-                type="submit"
-                className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
-                Criar
-              </button>
+              <div className="flex justify-between pt-3">
+                <button
+                  type="button"
+                  onClick={() => setBoxDeptOpen(false)}
+                  className="px-5 py-2 bg-gray-300 text-gray-800 rounded-xl hover:bg-gray-400 transition"
+                >
+                  Cancelar
+                </button>
 
-              <button
-                onClick={() => setModalDeptOpen(false)}
-                type="button"
-                className="w-full bg-gray-300 text-gray-800 py-2 rounded-lg hover:bg-gray-400">
-                Cancelar
-              </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2 bg-green-600 text-white rounded-xl hover:bg-green-700 transition"
+                >
+                  Criar
+                </button>
+              </div>
 
             </form>
           </div>
