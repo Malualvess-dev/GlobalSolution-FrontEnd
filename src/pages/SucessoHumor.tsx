@@ -7,7 +7,8 @@ export default function SucessoHumor() {
       {/* Fundo Tech */}
       <div className="absolute inset-0 bg-[url('/tech-lines.png')] bg-cover opacity-100 pointer-events-none"></div>
 
-      
+      {/* CARD */}
+      <div className="relative bg-white p-12 rounded-3xl shadow-xl w-[500px] z-10 text-center">
 
         {/* Ícone */}
         <div className="flex justify-center mb-6">

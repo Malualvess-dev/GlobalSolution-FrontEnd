@@ -49,16 +49,7 @@ export default function Integrantes() {
       {/* Fundo Tech */}
       <div className="absolute inset-0 bg-[url('/tech-lines.png')] bg-cover opacity-100 pointer-events-none"></div>
 
-      {/* Botão Voltar */}
-      <div className="absolute top-6 left-6 z-20">
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-blue-700 font-semibold hover:text-blue-900 transition"
-        >
-          <img src="/voltar.jpeg" className="w-5" />
-          Voltar
-        </button>
-      </div>
+     
 
       {/* Título */}
       <h1 className="text-5xl font-extrabold text-blue-800 mt-20 mb-3 tracking-tight z-10">
