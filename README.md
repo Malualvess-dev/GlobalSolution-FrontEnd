@@ -74,7 +74,7 @@ Recursos
 Benefícios
 
 Login: Gerente login utilize esse cpf: 10101010101 e essa senha: senha123
-Login: Funcionario login utilize esse cpf: 12345678910 e essa senha: 12345
+Login: Funcionario login utilize esse cpf: 48315572857 e essa senha: 9886
 
 Cadastro: 
 Caso cadastre um funcionario utilize o id do gerente como 7 e id do departamento como 3
