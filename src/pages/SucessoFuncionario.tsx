@@ -4,7 +4,7 @@ const SucessoFuncionario = () => {
 
       {/* Ícone */}
       <img
-        src="/check.png"
+        src="/logo-ia.png"
         alt="Sucesso"
         className="w-28 mb-6 drop-shadow-lg"
       />

@@ -46,7 +46,7 @@ const CadastroFuncionario = () => {
 }
 
 
-      navigate("/sucesso");
+      navigate("/sucesso-funcionario");
     } catch (error) {
       console.error("Erro:", error);
       alert("Erro ao conectar ao servidor.");
