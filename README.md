@@ -1,73 +1,183 @@
-# React + TypeScript + Vite
+# 🌐 IA no Trabalho  
+Aplicação web desenvolvida para demonstrar como a Inteligência Artificial pode transformar o ambiente de trabalho, aumentar a produtividade e otimizar processos.  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto desenvolvido como parte da **Global Solution**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 1. Título e Descrição  
+Este projeto apresenta uma interface moderna e responsiva que explora os benefícios da Inteligência Artificial no ambiente profissional.  
+Ele conta com telas de navegação, página inicial estilizada, seções informativas, login/cadastro e integração visual tecnológica.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 2. Status do Projeto  
+✔ Projeto Finalizado  
+✔ Deploy Publicado na Vercel  
+✔ Responsivo  
+✔ Design Moderno com Tailwind  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📚 3. Sumário  
+- [Título e Descrição](#-1-título-e-descrição)  
+- [Status do Projeto](#-2-status-do-projeto)  
+- [Sumário](#-3-sumário)  
+- [Sobre o Projeto](#-4-sobre-o-projeto)  
+- [Tecnologias Utilizadas](#-5-tecnologias-utilizadas)  
+- [Instalação](#-6-instalação)  
+- [Como Usar](#-7-como-usar)  
+- [Estrutura de Pastas](#-8-estrutura-de-pastas)  
+- [Endpoints / Rotas Principais](#-9-endpoints-ou-rotas-principais)  
+- [Autores e Créditos](#-10-autores-e-créditos)  
+- [Screenshots / Demonstração](#-11-screenshots--demonstração)  
+- [Contato](#-12-contato)  
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🧠 4. Sobre o Projeto  
+O objetivo desta aplicação é apresentar, de forma simples e visual, como a Inteligência Artificial está revolucionando o cenário corporativo.  
+O site contém:  
+- Página inicial moderna com um robô ilustrativo  
+- Botões animados com gradiente  
+- Seção de recursos e benefícios  
+- Página de login e cadastro  
+- Estrutura de navegação limpo e responsivo  
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ 5. Tecnologias Utilizadas  
+- **React + Vite**  
+- **TypeScript**  
+- **TailwindCSS**  
+- **React Router DOM**  
+- **Vercel** (Deploy)  
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📦 6. Instalação  
+Clone o repositório:
+
+
+🌍 7. Como Usar
+
+Acesse o deploy da aplicação:
+
+https://global-solution-front-end.vercel.app/
+
+Navegue pelas seções:
+
+Home
+
+Recursos
+
+Benefícios
+
+Login: Gerente login utilize esse cpf: 10101010101 e essa senha: senha123
+Login: Funcionario login utilize esse cpf: 12345678910 e essa senha: 12345
+
+Cadastro: 
+Caso cadastre um funcionario utilize o id do gerente como 7 e id do departamento como 3
+
+## ABA funcinario:
+
+Criar tarefa: Pode colocar as infromações necessárias, apenas coloque o id do funcionario pode ser entre 1 a 9
+
+Gerenciador de humor: Pode colocar as infromações necessárias, apenas coloque o id do funcionario pode ser entre 1 a 9
+
+## ABA gerente
+
+Criar departamento: Pode apenas colocaar o nome do departamento e o id do gerente responsavel sendo de 1 a 9
+Lista de departamento: Possivel visualizar todos o departamentos
+
+Contato
+
+FAQ
+
+Integrantes
+
+Sobre
+
+8. Estrutura de Pastas
+   /
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── pages/
+│   ├── App.tsx
+│   └── main.tsx
+├── package.json
+├── vite.config.ts
+└── tailwind.config.js
+
+🔗 9. Endpoints ou Rotas Principais
+Rotas Internas (Front-End)
+
+🏠 Rotas Públicas
+Rota	Descrição
+/	Página inicial (Home)
+/faq	Perguntas frequentes
+/sobre	Página sobre o projeto
+/contato	Página de contato
+/integrantes	Lista e apresentação dos integrantes
+
+🔐 Autenticação
+Rota	Descrição
+/login	Tela de login unificado (Gerente e Funcionário)
+/atualizarSenha	Página para atualizar senha
+/senhaAlterada	Tela de confirmação após troca de senha
+
+👤 Cadastro de Usuários
+Rota	Descrição
+/cadastro-funcionario	Cadastro de funcionário
+/sucesso-funcionario	Tela de sucesso após cadastro do funcionário
+/cadastro-gerente	Cadastro de gerente
+/sucesso-gerente	Tela de sucesso após cadastro do gerente
+
+👨‍💼 Área do Gerente
+Rota	Descrição
+/TelaInicialGerente	Dashboard inicial do gerente
+/sucesso-departamento	Sucesso após criar departamento
+/lista-departamento	Listagem de departamentos
+/excluir-funcionario	Página para excluir funcionário
+
+👷 Área do Funcionário
+Rota	Descrição
+/TelaInicialFuncionario	Dashboard inicial do funcionário
+/humor	Gerenciador de humor
+/sucesso-humor	Tela de sucesso após enviar humor
+
+📝 Tarefas
+Rota	Descrição
+/criar-tarefa	Criar nova tarefa
+/sucesso-tarefa	Tela de sucesso após criar tarefa
+/lista-tarefas	Listagem de tarefas
+
+🧑‍💻 10. Autores e Créditos
+
+👩 Maria Luiza Alves de Aquino
+RM: 561802
+Turma: 1TDSPI
+LinkedIn: https://www.linkedin.com/in/maluaquino/
+GitHub: https://github.com/Malualvess-dev
+Imagem:![fotoMalu](https://github.com/user-attachments/assets/15a2ab3c-4836-468e-a831-2323a2f840bf)
+
+👩Liana Lyumi Morisita Fujisima
+RM: 565698
+Turma: 1TDSPI
+LinkedIn: https://www.linkedin.com/in/liana-lyumi-morisita-fujisima-22368a367/
+GitHub: https://github.com/lianafujisima
+Imagem:![fotoLiana](https://github.com/user-attachments/assets/d966ff8b-e06c-4026-bb54-68647f18fc13)
+
+👨 Victor William Hwan Cho
+RM:565382
+Turma:1TDSPI
+LinkedIn: https://www.linkedin.com/in/victor-cho-91a508367?trk=contact-info
+GitHub: https://github.com/Victorcho05
+Imagem: ![fotoVitor](https://github.com/user-attachments/assets/c26a18d9-cc65-4414-b112-24cacb9d1265)
+
+
+
+
+
