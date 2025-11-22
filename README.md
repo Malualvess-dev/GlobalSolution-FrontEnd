@@ -177,6 +177,10 @@ LinkedIn: https://www.linkedin.com/in/victor-cho-91a508367?trk=contact-info
 GitHub: https://github.com/Victorcho05
 Imagem: ![fotoVitor](https://github.com/user-attachments/assets/c26a18d9-cc65-4414-b112-24cacb9d1265)
 
+Link do repositório:
+
+https://github.com/Malualvess-dev/GlobalSolution-FrontEnd.git
+
 
 
 
