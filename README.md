@@ -65,6 +65,14 @@ Acesse o deploy da aplicação:
 
 https://global-solution-front-end.vercel.app/
 
+Acesso ao repositório do trabalho:
+
+https://github.com/Malualvess-dev/GlobalSolution-FrontEnd.git
+
+Link do video Youtube:
+
+Foi mandado no privado do professor
+
 Navegue pelas seções:
 
 Home
